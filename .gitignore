@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+db.sqlite3
+db.sqlite3-journal
+migrations/
+
+#
+libraryenv/
+libraryapp/views/connection.py
+.env
+
+
+# Django stuff:
+*.log
+*.pot
+
+settings.py
+
+local_settings.py
+
+.vscode
