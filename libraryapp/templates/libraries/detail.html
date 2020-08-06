@@ -1,15 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
+{% extends 'shared/base.html' %}
+{% block content %}
 
-<head>
-    <meta charset="utf-8">
-    <title>Library</title>
-</head>
+<h1>{{ library.title }}</h1>
+<h2>By {{ library.address }}</h2>
 
-<body>
-    <h1>{{ library.title }}</h1>
-    <h2>By {{ library.address }}</h2>
-</body>
-
-</html>
+{% endblock %}

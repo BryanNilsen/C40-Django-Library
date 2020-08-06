@@ -14,8 +14,4 @@ libraryapp/views/connection.py
 *.log
 *.pot
 
-settings.py
-
-local_settings.py
-
 .vscode
