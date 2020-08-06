@@ -1,10 +1,11 @@
 import sqlite3
+from ..connection import Connection
+from ..helpers.helpers import Helpers
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from libraryapp.models import Book
 from libraryapp.models import Library
 from libraryapp.models import model_factory
-from ..connection import Connection
 
 
 def get_libraries():
@@ -22,28 +23,8 @@ def get_libraries():
 
         return db_cursor.fetchall()
 
+
 # ! DUPLICATE CODE FOUND IN DETAILS
-
-
-def get_book(book_id):
-    with sqlite3.connect(Connection.db_path) as conn:
-        conn.row_factory = model_factory(Book)
-        db_cursor = conn.cursor()
-
-        db_cursor.execute("""
-        SELECT
-            b.id,
-            b.title,
-            b.isbn,
-            b.author,
-            b.year_published,
-            b.librarian_id,
-            b.location_id
-        FROM libraryapp_book b
-        WHERE b.id = ?
-        """, (book_id,))
-
-        return db_cursor.fetchone()
 
 
 @login_required
@@ -62,7 +43,7 @@ def book_form(request):
 def book_edit_form(request, book_id):
 
     if request.method == 'GET':
-        book = get_book(book_id)
+        book = Helpers.get_book(book_id)
         libraries = get_libraries()
 
         template = 'books/form.html'
