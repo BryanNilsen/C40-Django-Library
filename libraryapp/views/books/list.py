@@ -50,9 +50,6 @@ def book_list(request):
                 year_published, location_id, librarian_id
             )
             VALUES (?, ?, ?, ?, ?, ?)
-            """,
-                              (form_data['title'], form_data['author'],
-                               form_data['isbn'], form_data['year_published'],
-                               request.user.librarian.id, form_data["location"]))
+            """, (form_data['title'], form_data['author'], form_data['isbn'], form_data['year_published'], request.user.librarian.id, form_data["location"]))
 
         return redirect(reverse('libraryapp:books'))
